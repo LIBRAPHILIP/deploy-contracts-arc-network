@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arc Network Contract Deployer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6/dist/ethers.min.js"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Arc Network</p>
+        <h1>Smart Contract Deployment</h1>
+        <p>Deploy a compiled contract to Arc Testnet using a browser wallet. Your wallet address is prefilled below.</p>
+      </div>
+      <div class="note-panel">
+        <p><strong>Wallet address:</strong></p>
+        <p class="mono">0xa84e8ac49f6eea4fec824c8da492875242e1eb09</p>
+        <p><strong>RPC endpoint:</strong></p>
+        <p class="mono">https://rpc.testnet.arc.network</p>
+        <p><strong>Chain ID:</strong> 5079826</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="form-grid">
+        <div>
+          <label for="currentAccount">Connected account</label>
+          <input id="currentAccount" readonly value="Not connected" />
+        </div>
+        <div>
+          <label for="currentChain">Connected network</label>
+          <input id="currentChain" readonly value="Unknown" />
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button id="connectWalletButton">Connect Wallet</button>
+        <button id="switchChainButton">Switch to Arc Testnet</button>
+      </div>
+
+      <div class="input-group">
+        <label for="contractAbi">Contract ABI (JSON)</label>
+        <textarea id="contractAbi" spellcheck="false" rows="6" placeholder='Paste contract ABI here or use [] for no constructor'></textarea>
+      </div>
+
+      <div class="input-group">
+        <label for="contractBytecode">Contract bytecode</label>
+        <textarea id="contractBytecode" spellcheck="false" rows="6" placeholder="Paste compiled contract bytecode here (0x...)" ></textarea>
+      </div>
+
+      <div class="input-group">
+        <label for="constructorArgs">Constructor arguments (JSON array)</label>
+        <input id="constructorArgs" placeholder='e.g. ["Hello Arc"]' />
+      </div>
+
+      <div class="button-row">
+        <button id="deployButton" class="primary" disabled>Deploy Contract</button>
+      </div>
+
+      <div class="status-panel" id="statusPanel">
+        <p id="statusMessage">Ready to deploy.</p>
+      </div>
+
+      <div class="result-grid">
+        <div>
+          <label>Transaction hash</label>
+          <pre id="txHash">-</pre>
+        </div>
+        <div>
+          <label>Contract address</label>
+          <pre id="contractAddress">-</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>How to use</h2>
+      <ol>
+        <li>Open this page in a browser that has a Web3 wallet extension available.</li>
+        <li>Connect your wallet and switch to Arc Testnet.</li>
+        <li>Paste your compiled contract bytecode and ABI.</li>
+        <li>Add any constructor arguments as a JSON array.</li>
+        <li>Click Deploy Contract and wait for confirmation.</li>
+      </ol>
+      <p>Use a contract compiler or existing Arc-contract bundle to generate the bytecode and ABI before deployment.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
